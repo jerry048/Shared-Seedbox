@@ -102,10 +102,10 @@ EOF
     systemctl --user start qbittorrent
 # Screen
 elif [ "${e}" == "1" ]; then
-screen -dmS qBittorrent-nox $HOME/bin/qbittorrent-nox
+    screen -dmS qBittorrent-nox $HOME/bin/qbittorrent-nox
 # Daemon
 elif [ "${e}" == "2" ]; then
-$HOME/bin/qbittorrent-nox -d
+    $HOME/bin/qbittorrent-nox -d
 fi
 
 # Cleanup
