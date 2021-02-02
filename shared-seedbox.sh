@@ -16,38 +16,38 @@ function qbittorrent_config {
     if [[ "${version}" =~ "4.1." ]]; then
         md5password=$(echo -n $password | md5sum | awk '{print $1}')
         cat << EOF >$HOME/.config/qBittorrent/qBittorrent.conf
-    [LegalNotice]
-    Accepted=true
+[LegalNotice]
+Accepted=true
 
-    [Network]
-    Cookies=@Invalid()
+[Network]
+Cookies=@Invalid()
 
-    [Preferences]
-    Connection\PortRangeMin=45000
-    Downloads\SavePath=$HOME/qbittorrent/Downloads/
-    Queueing\QueueingEnabled=false
-    WebUI\Password_ha1=@ByteArray($md5password)
-    WebUI\Port=8080
-    WebUI\Username=$username
-    EOF
+[Preferences]
+Connection\PortRangeMin=45000
+Downloads\SavePath=$HOME/qbittorrent/Downloads/
+Queueing\QueueingEnabled=false
+WebUI\Password_ha1=@ByteArray($md5password)
+WebUI\Port=8080
+WebUI\Username=$username
+EOF
     elif [[ "${version}" =~ "4.2."|"4.3." ]]; then
         curl -s -O https://$tokens@raw.githubusercontent.com/jerry048/Seedbox-Install-Components/main/qb_password_gen && chmod +x $HOME/qb_password_gen
         PBKDF2password=$($HOME/qb_password_gen $password)
         cat << EOF >$HOME/.config/qBittorrent/qBittorrent.conf
-    [LegalNotice]
-    Accepted=true
+[LegalNotice]
+Accepted=true
 
-    [Network]
-    Cookies=@Invalid()
+[Network]
+Cookies=@Invalid()
 
-    [Preferences]
-    Connection\PortRangeMin=45000
-    Downloads\SavePath=$HOME/qbittorrent/Downloads/
-    Queueing\QueueingEnabled=false
-    WebUI\Password_PBKDF2="@ByteArray($PBKDF2password)"
-    WebUI\Port=8080
-    WebUI\Username=$username
-    EOF
+[Preferences]
+Connection\PortRangeMin=45000
+Downloads\SavePath=$HOME/qbittorrent/Downloads/
+Queueing\QueueingEnabled=false
+WebUI\Password_PBKDF2="@ByteArray($PBKDF2password)"
+WebUI\Port=8080
+WebUI\Username=$username
+EOF
     fi
 }
 
