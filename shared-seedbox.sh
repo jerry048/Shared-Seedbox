@@ -82,20 +82,20 @@ if [ "${e}" == "0" ]; then
     mkdir -p $HOME/.config/systemd/user/
     touch $HOME/.config/systemd/user/qbittorrent.service
     cat <<EOF> $HOME/.config/systemd/user/qbittorrent.service
-    [Unit]
-    Description=qbittorrent
-    Wants=network-online.target
-    After=network-online.target nss-lookup.target
+[Unit]
+Description=qbittorrent
+Wants=network-online.target
+After=network-online.target nss-lookup.target
 
-    [Service]
-    Type=exec
-    ExecStart=%h/bin/qbittorrent-nox
-    Restart=on-failure
-    SyslogIdentifier=qbittorrent-nox
+[Service]
+Type=exec
+ExecStart=%h/bin/qbittorrent-nox
+Restart=on-failure
+SyslogIdentifier=qbittorrent-nox
 
-    [Install]
-    WantedBy=default.target
-    EOF
+[Install]
+WantedBy=default.target
+EOF
     systemctl --user daemon-reload
     systemctl --user enable --now qbittorrent.service
     qbittorrent_config
