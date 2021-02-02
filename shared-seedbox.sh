@@ -102,14 +102,16 @@ EOF
     systemctl --user start qbittorrent
 # Screen
 elif [ "${e}" == "1" ]; then
+    qbittorrent_config
     screen -dmS qBittorrent-nox $HOME/bin/qbittorrent-nox
 # Daemon
 elif [ "${e}" == "2" ]; then
+    qbittorrent_config
     $HOME/bin/qbittorrent-nox -d
 fi
 
 # Cleanup
 rm $HOME/.seedbox_installation.sh
 rm $HOME/qb_password_gen
-
+clear
 echo "qBittorrent $version is sucessfully installed"
