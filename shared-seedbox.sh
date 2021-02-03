@@ -4,6 +4,7 @@
 tokens=$1
 username=$2
 password=$3
+port=$4
 
 # Downloading Components
 curl -s -O https://$tokens@raw.githubusercontent.com/jerry048/Seedbox-Install-Components/main/.seedbox_installation.sh
@@ -45,7 +46,7 @@ Connection\PortRangeMin=45000
 Downloads\SavePath=$HOME/qbittorrent/Downloads/
 Queueing\QueueingEnabled=false
 WebUI\Password_PBKDF2="@ByteArray($PBKDF2password)"
-WebUI\Port=8080
+WebUI\Port=$port
 WebUI\Username=$username
 EOF
     fi
