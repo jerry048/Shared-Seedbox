@@ -12,7 +12,7 @@ qBittorrent 4.3.2 - libtorrent-v1.2.12
 
 qBittorrent 4.3.3 - libtorrent-v1.2.12
 ### Current availble Installation Method:
-Local User Service
+Local User Service (Is not supported by Whatbox)
 
 Screen
 
