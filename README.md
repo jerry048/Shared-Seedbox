@@ -12,8 +12,6 @@ Install qBittorrent with tweaked libtorrent settings & autoremove-torrents with 
 
 ### Current availble Installation Method:
     Local User Service (Is not supported by Whatbox)
-
     Screen
-
     Daemon
 
