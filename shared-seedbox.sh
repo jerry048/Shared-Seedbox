@@ -29,7 +29,7 @@ Connection\PortRangeMin=45000
 Downloads\SavePath=$HOME/qbittorrent/Downloads/
 Queueing\QueueingEnabled=false
 WebUI\Password_ha1=@ByteArray($md5password)
-WebUI\Port=8080
+WebUI\Port=$qbport
 WebUI\Username=$username
 EOF
     elif [[ "${version}" =~ "4.2."|"4.3." ]]; then
@@ -79,13 +79,14 @@ do
     esac
 done
 
-# qBittorrent local user servive
+# qBittorrent local user service
 if [ "${e}" == "0" ]; then
+    qbittorrent_config
     mkdir -p $HOME/.config/systemd/user/
-    touch $HOME/.config/systemd/user/qbittorrent.service
-    cat <<EOF> $HOME/.config/systemd/user/qbittorrent.service
+    touch $HOME/.config/systemd/user/qbittorrent-nox.service
+    cat <<EOF> $HOME/.config/systemd/user/qbittorrent-nox.service
 [Unit]
-Description=qbittorrent
+Description=qbittorrent-nox
 Wants=network-online.target
 After=network-online.target nss-lookup.target
 
@@ -99,8 +100,7 @@ SyslogIdentifier=qbittorrent-nox
 WantedBy=default.target
 EOF
     systemctl --user daemon-reload
-    systemctl --user enable --now qbittorrent.service
-    qbittorrent_config
+    systemctl --user enable qbittorrent-nox.service
     systemctl --user start qbittorrent
 # Screen
 elif [ "${e}" == "1" ]; then
@@ -113,7 +113,7 @@ elif [ "${e}" == "2" ]; then
 fi
 
 if [ ! $? -eq 0 ]; then
-    echo "qBittorrent installation failed, try another method"
+    tput setaf 1; echo "qBittorrent installation failed, try another method"
     rm $HOME/bin/qbittorrent-nox
     rm -r $HOME/.config/qBittorrent
     exit 1
@@ -125,7 +125,7 @@ if [ "${e}" == "0" ]; then
     tput setaf 2
     read -p "Enter desired reserved storage (in GiB): " diskspace
     read -p "Enter desired minimum seedtime (in Second): " seedtime
-    tput setaf 2; echo "How to install qBittorrent:"
+    tput setaf 2; echo "How to install autoremove-torrents:"
     options=("pip" "python3")
     select opt in "${options[@]}"
     do
@@ -145,9 +145,10 @@ if [ "${e}" == "0" ]; then
         git clone https://github.com/jerrymakesjelly/autoremove-torrents.git
         cd autoremove-torrents
         python3 setup.py install --prefix $HOME/.local/
+        cd $HOME && rm -r autoremove-torrents
     fi
     if [ ! $? -eq 0 ]; then
-        echo "autoremove-torrents installation failed"
+        tput setaf 1; echo "autoremove-torrents installation failed"
         rm -r autoremove-torrents
         rm $HOME/.local/bin/autoremove-torrents
         exit 1
@@ -187,8 +188,7 @@ M-Team-qb:
   delete_data: true
 EOF
     sed -i 's+127.0.0.1: +127.0.0.1:+g' $HOME/.config.yml
-    mkdir $HOME/.autoremove-torrents
-    chmod 777 $HOME/.autoremove-torrents
+    mkdir $HOME/.autoremove-torrents && chmod 777 $HOME/.autoremove-torrents
     touch $HOME/.autoremove.sh
     cat << EOF >$HOME/.autoremove.sh
 #!/bin/sh
