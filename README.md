@@ -11,7 +11,10 @@ Install qBittorrent with tweaked libtorrent settings & autoremove-torrents with 
     | qBittorrent 4.3.3   | libtorrent-v1.2.12 |
 
 ### Current availble Installation Method:
-    Local User Service (Is not supported by Whatbox)
+    Local User Service 
     Screen
     Daemon
+### Shared seedbox supports
+Dediseedbox - Does not support
+Whatbox - Use screen or Daemon installation Method
 
