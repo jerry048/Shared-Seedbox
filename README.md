@@ -15,6 +15,6 @@ Install qBittorrent with tweaked libtorrent settings & autoremove-torrents with 
     Screen
     Daemon
 ### Shared seedbox supports
-Dediseedbox - Does not support
-Whatbox - Use screen or Daemon installation Method
+    Dediseedbox - Does not support
+    Whatbox - Use screen or Daemon installation Method
 
