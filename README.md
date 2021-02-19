@@ -15,7 +15,7 @@ Install qBittorrent with tweaked libtorrent settings & autoremove-torrents with 
     Screen
     Daemon
 ### Shared seedbox supports
-    Dediseedbox - Need to use ssh tunneling
+    Dediseedbox - Need to use ssh tunneling - Not Worth it
         Please add WebUI\HostHeaderValidation=false to the config
     Whatbox - Use screen or Daemon installation Method
 
