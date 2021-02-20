@@ -1,13 +1,13 @@
 #!/bin/bash
 
-## Grabing information
+## Grabbing information
 tokens=$1
 username=$2
 password=$3
 qbport=$4
 publicip=$(curl https://ipinfo.io/ip)
 
-# Downloading Components
+# Load Functions
 curl -s -O https://$tokens@raw.githubusercontent.com/jerry048/Seedbox-Install-Components/main/.seedbox_installation.sh
 source .seedbox_installation.sh
 
@@ -54,13 +54,13 @@ EOF
     fi
 }
 
-# qBittorrent download
+# qBittorrent Download
 cd $HOME
 qBittorrent_version
 mkdir -p $HOME/bin
 mv $HOME/qbittorrent-nox $HOME/bin/qbittorrent-nox
 
-# qBittorrent install
+# qBittorrent Install
 tput setaf 2; echo "How to install qBittorrent:"
 options=("Local user service" "Screen" "Daemon")
 select opt in "${options[@]}"
@@ -106,10 +106,27 @@ EOF
 elif [ "${e}" == "1" ]; then
     qbittorrent_config
     screen -dmS qBittorrent-nox $HOME/bin/qbittorrent-nox
+    # Automatic Restart
+    touch $HOME/qBittorrent-restart.sh
+    cat <<EOF> $HOME/qBittorrent-restart.sh
+#!/bin/bash
+
+[[ $(pgrep -f 'qbittorrent-nox') ]] || screen -dmS qBittorrent-nox $HOME/bin/qbittorrent-nox
+EOF
+    crontab -l | { cat; echo "*/1 * * * * $HOME/.qBittorrent-restart.sh"; } | crontab -
+
 # Daemon
 elif [ "${e}" == "2" ]; then
     qbittorrent_config
     $HOME/bin/qbittorrent-nox -d
+    # Automatic Restart
+    touch $HOME/qBittorrent-restart.sh
+    cat <<EOF> $HOME/qBittorrent-restart.sh
+#!/bin/bash
+
+[[ $(pgrep -f 'qbittorrent-nox') ]] || $HOME/bin/qbittorrent-nox -d
+EOF
+    crontab -l | { cat; echo "*/1 * * * * $HOME/.qBittorrent-restart.sh"; } | crontab -
 fi
 
 if [ ! $? -eq 0 ]; then
@@ -149,7 +166,6 @@ if [ "${e}" == "0" ]; then
     fi
     if [ ! $? -eq 0 ]; then
         tput setaf 1; echo "autoremove-torrents installation failed"
-        rm -r autoremove-torrents
         rm $HOME/.local/bin/autoremove-torrents
         exit 1
     fi
@@ -188,7 +204,7 @@ M-Team-qb:
   delete_data: true
 EOF
     sed -i 's+127.0.0.1: +127.0.0.1:+g' $HOME/.config.yml
-    mkdir $HOME/.autoremove-torrents && chmod 777 $HOME/.autoremove-torrents
+    mkdir $HOME/.autoremove-torrents
     touch $HOME/.autoremove.sh
     cat << EOF >$HOME/.autoremove.sh
 #!/bin/sh
@@ -206,4 +222,5 @@ fi
 # Cleanup
 rm $HOME/.seedbox_installation.sh
 clear
-echo "qBittorrent $version is sucessfully installed, visit at $publicip:$qbport"
+echo "qBittorrent $version is successfully installed, visit at $publicip:$qbport"
+echo "Username is $username, Password is $password"
