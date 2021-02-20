@@ -15,10 +15,15 @@ Install qBittorrent with tweaked libtorrent settings & autoremove-torrents with 
     Screen
     Daemon
 ### Shared seedbox supports
-    Dediseedbox - qBittorrent in not connectable* since the SSH is built inside docker
+    1. Dediseedbox - qBittorrent in not connectable* since the SSH is built inside docker
         Please add WebUI\HostHeaderValidation=false to the config
         Need to use ssh tunneling to access the WebUI
-    Whatbox - Use screen or Daemon installation Method
+        
+    2. Feralhosting - Use screen or Daemon installation Method
+        
+    3. Whatbox - Use screen or Daemon installation Method
+    
+    
     
 *Connectability - Ability of your client to accept incoming connections from other clients, to facilitate transferring data.  Two unconnectable clients can not communicate, which is why having people connectable in a swarm is important. *~From MAM*
 
