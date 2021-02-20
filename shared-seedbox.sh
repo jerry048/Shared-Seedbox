@@ -5,6 +5,8 @@ tokens=$1
 username=$2
 password=$3
 qbport=$4
+port=$5
+cache=$6
 publicip=$(curl https://ipinfo.io/ip)
 
 # Load Functions
@@ -25,7 +27,8 @@ Accepted=true
 Cookies=@Invalid()
 
 [Preferences]
-Connection\PortRangeMin=45000
+Connection\PortRangeMin=$port
+Downloads\DiskWriteCacheSize=$cache
 Downloads\SavePath=$HOME/qbittorrent/Downloads/
 Queueing\QueueingEnabled=false
 WebUI\Password_ha1=@ByteArray($md5password)
@@ -43,7 +46,8 @@ Accepted=true
 Cookies=@Invalid()
 
 [Preferences]
-Connection\PortRangeMin=45000
+Connection\PortRangeMin=$port
+Downloads\DiskWriteCacheSize=$cache
 Downloads\SavePath=$HOME/qbittorrent/Downloads/
 Queueing\QueueingEnabled=false
 WebUI\Password_PBKDF2="@ByteArray($PBKDF2password)"
