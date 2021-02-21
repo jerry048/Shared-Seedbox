@@ -1,4 +1,7 @@
 # Shared-Seedbox
+<details>
+  <summary>qBittorrent & autoremove torrents Install</summary>
+    
 ## Usage
 `curl -s -O https://raw.githubusercontent.com/jerry048/Shared-Seedbox/main/qBittorrent.sh && chmod +x shared-seedbox.sh`
 
@@ -28,4 +31,14 @@ Install qBittorrent with tweaked libtorrent settings & autoremove-torrents with 
     
     
 *Connectability - Ability of your client to accept incoming connections from other clients, to facilitate transferring data.  Two unconnectable clients can not communicate, which is why having people connectable in a swarm is important. *~From MAM*
+</details>
 
+<details>
+  <summary>Network Bandwidth Monitor</summary>
+
+## Usage
+`curl -s -O https://raw.githubusercontent.com/jerry048/Shared-Seedbox/main/Bandwidth_Usage.sh && chmod +x shared-seedbox.sh`
+
+`bash Bandwidth_Usage.sh`
+## Functions
+Monitor Bandwidth Usage of the Machine in situation where nload, vnstat, etc. are unavailable.
