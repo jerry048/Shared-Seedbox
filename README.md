@@ -1,6 +1,6 @@
 # Shared-Seedbox
 <details>
-  <summary>qBittorrent & autoremove torrents Install</summary>
+  <summary>qBittorrent & autoremove-torrents Install</summary>
     
 ## Usage
 `curl -s -O https://raw.githubusercontent.com/jerry048/Shared-Seedbox/main/qBittorrent.sh && chmod +x shared-seedbox.sh`
