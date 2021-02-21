@@ -37,8 +37,6 @@ Install qBittorrent with tweaked libtorrent settings & autoremove-torrents with 
   <summary>Bandwidth Monitor</summary>
 
 ## Usage
-`curl -s -O https://raw.githubusercontent.com/jerry048/Shared-Seedbox/main/Bandwidth_Usage.sh && chmod +x shared-seedbox.sh`
-
-`bash Bandwidth_Usage.sh`
+`bash <(wget -qO- https://raw.githubusercontent.com/jerry048/Shared-Seedbox/main/Bandwidth_Usage.sh)`
 ## Functions
 Monitor Bandwidth Usage of the Machine in situation where nload, vnstat, etc. are unavailable.
