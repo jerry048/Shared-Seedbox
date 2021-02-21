@@ -34,7 +34,7 @@ Install qBittorrent with tweaked libtorrent settings & autoremove-torrents with 
 </details>
 
 <details>
-  <summary>Network Bandwidth Monitor</summary>
+  <summary>Bandwidth Monitor</summary>
 
 ## Usage
 `curl -s -O https://raw.githubusercontent.com/jerry048/Shared-Seedbox/main/Bandwidth_Usage.sh && chmod +x shared-seedbox.sh`
