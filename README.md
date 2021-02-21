@@ -1,8 +1,8 @@
 # Shared-Seedbox
 ## Usage
-`curl -s -O https://raw.githubusercontent.com/jerry048/Shared-Seedbox/main/shared-seedbox.sh && chmod +x shared-seedbox.sh`
+`curl -s -O https://raw.githubusercontent.com/jerry048/Shared-Seedbox/main/qBittorrent.sh && chmod +x shared-seedbox.sh`
 
-`bash shared-seedbox.sh <Personal access tokens> <Username> <Password> <WebUI Port> <Port used for incoming connections> <Cache Size(unit:MiB)>`
+`bash qBittorrent.sh <Personal access tokens> <Username> <Password> <WebUI Port> <Port used for incoming connections> <Cache Size(unit:MiB)>`
 ## Functions
 Install qBittorrent with tweaked libtorrent settings & autoremove-torrents with minimum config. This script does not require root to run so it should support most Shared Seedbox.
 ### Currently availble qBittorrent Versions:
