@@ -3,7 +3,7 @@
   <summary>qBittorrent & autoremove-torrents Install</summary>
     
 ## Usage
-`curl -s -O https://raw.githubusercontent.com/jerry048/Shared-Seedbox/main/qBittorrent.sh && chmod +x shared-seedbox.sh`
+`curl -s -O https://raw.githubusercontent.com/jerry048/Shared-Seedbox/main/qBittorrent.sh && chmod +x qBittorrent.sh`
 
 `bash qBittorrent.sh <Personal access tokens> <Username> <Password> <WebUI Port> <Port used for incoming connections> <Cache Size(unit:MiB)>`
 ## Functions
