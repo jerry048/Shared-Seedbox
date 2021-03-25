@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 ## Grab interface name
-interface=$(ip -o -4 route show to default | awk '{print $5}')
+ read -p "Enter interface name (e.g. eno1): " interface
 
 ## Define Monitor_Network_Bandwidth
 function Monitor_Network_Bandwidth {
