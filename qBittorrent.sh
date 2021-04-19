@@ -10,11 +10,11 @@ cache=$6
 publicip=$(curl https://ipinfo.io/ip)
 
 # Load Functions
-curl -s -O https://$tokens@raw.githubusercontent.com/jerry048/Seedbox-Install-Components/main/.seedbox_installation.sh
+curl -s -O https://$tokens@raw.githubusercontent.com/jerry048/Seedbox-Components/main/.seedbox_installation.sh
 source .seedbox_installation.sh
 
-# Define qBittorrent Config
-function qbittorrent_config {
+# Define qBittorrent Setting
+function qbittorrent_setting {
     mkdir -p $HOME/.config/qBittorrent
     touch $HOME/.config/qBittorrent/qBittorrent.conf
     if [[ "${version}" =~ "4.1." ]]; then
@@ -36,7 +36,7 @@ WebUI\Port=$qbport
 WebUI\Username=$username
 EOF
     elif [[ "${version}" =~ "4.2."|"4.3." ]]; then
-        curl -s -O https://$tokens@raw.githubusercontent.com/jerry048/Seedbox-Install-Components/main/qb_password_gen && chmod +x $HOME/qb_password_gen
+        curl -s -O https://$tokens@raw.githubusercontent.com/jerry048/Seedbox-Components/main/Miscellaneous/qb_password_gen && chmod +x $HOME/qb_password_gen
         PBKDF2password=$($HOME/qb_password_gen $password)
         cat << EOF >$HOME/.config/qBittorrent/qBittorrent.conf
 [LegalNotice]
@@ -60,8 +60,9 @@ EOF
 
 # qBittorrent Download
 cd $HOME
-qBittorrent_version
+qBittorrent_download
 mkdir -p $HOME/bin
+test -e $HOME/bin/qbittorrent-nox && rm $HOME/bin/qbittorrent-nox
 mv $HOME/qbittorrent-nox $HOME/bin/qbittorrent-nox
 
 # qBittorrent Install
@@ -112,7 +113,7 @@ elif [ "${e}" == "1" ]; then
     screen -dmS qBittorrent-nox $HOME/bin/qbittorrent-nox
     # Automatic Restart
     touch $HOME/qBittorrent-restart.sh
-    cat <<EOF> $HOME/qBittorrent-restart.sh
+    cat <<'EOF'> $HOME/qBittorrent-restart.sh
 #!/bin/bash
 
 [[ $(pgrep -f 'qbittorrent-nox') ]] || screen -dmS qBittorrent-nox $HOME/bin/qbittorrent-nox
@@ -125,7 +126,7 @@ elif [ "${e}" == "2" ]; then
     $HOME/bin/qbittorrent-nox -d
     # Automatic Restart
     touch $HOME/qBittorrent-restart.sh
-    cat <<EOF> $HOME/qBittorrent-restart.sh
+    cat <<'EOF'> $HOME/qBittorrent-restart.sh
 #!/bin/bash
 
 [[ $(pgrep -f 'qbittorrent-nox') ]] || $HOME/bin/qbittorrent-nox -d
