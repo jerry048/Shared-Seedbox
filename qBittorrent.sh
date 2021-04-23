@@ -86,7 +86,7 @@ done
 
 # qBittorrent local user service
 if [ "${e}" == "0" ]; then
-    qbittorrent_config
+    qbittorrent_setting
     mkdir -p $HOME/.config/systemd/user/
     touch $HOME/.config/systemd/user/qbittorrent-nox.service
     cat <<EOF> $HOME/.config/systemd/user/qbittorrent-nox.service
@@ -109,7 +109,7 @@ EOF
     systemctl --user start qbittorrent
 # Screen
 elif [ "${e}" == "1" ]; then
-    qbittorrent_config
+    qbittorrent_setting
     screen -dmS qBittorrent-nox $HOME/bin/qbittorrent-nox
     # Automatic Restart
     touch $HOME/qBittorrent-restart.sh
@@ -122,7 +122,7 @@ EOF
 
 # Daemon
 elif [ "${e}" == "2" ]; then
-    qbittorrent_config
+    qbittorrent_setting
     $HOME/bin/qbittorrent-nox -d
     # Automatic Restart
     touch $HOME/qBittorrent-restart.sh
