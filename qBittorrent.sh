@@ -1,16 +1,15 @@
 #!/bin/bash
 
 ## Grabbing information
-tokens=$1
-username=$2
-password=$3
-qbport=$4
-port=$5
-cache=$6
+username=$1
+password=$2
+qbport=$3
+port=$4
+cache=$5
 publicip=$(curl https://ipinfo.io/ip)
 
 # Load Functions
-curl -s -O https://$tokens@raw.githubusercontent.com/jerry048/Seedbox-Components/main/.seedbox_installation.sh
+curl -s -O https://raw.githubusercontent.com/jerry048/Seedbox-Components/main/.seedbox_installation.sh
 source .seedbox_installation.sh
 
 # Define qBittorrent Setting
@@ -36,7 +35,7 @@ WebUI\Port=$qbport
 WebUI\Username=$username
 EOF
     elif [[ "${version}" =~ "4.2."|"4.3." ]]; then
-        curl -s -O https://$tokens@raw.githubusercontent.com/jerry048/Seedbox-Components/main/Miscellaneous/qb_password_gen && chmod +x $HOME/qb_password_gen
+        curl -s -O https://raw.githubusercontent.com/jerry048/Seedbox-Components/main/Miscellaneous/qb_password_gen && chmod +x $HOME/qb_password_gen
         PBKDF2password=$($HOME/qb_password_gen $password)
         cat << EOF >$HOME/.config/qBittorrent/qBittorrent.conf
 [LegalNotice]
