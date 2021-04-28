@@ -119,8 +119,8 @@ elif [ "${e}" == "1" ]; then
     qbittorrent_setting
     screen -dmS qBittorrent-nox $HOME/bin/qbittorrent-nox
     # Automatic Restart
-    touch $HOME/qBittorrent-restart.sh
-    cat <<'EOF'> $HOME/qBittorrent-restart.sh
+    touch $HOME/.qBittorrent-restart.sh
+    cat <<'EOF'> $HOME/.qBittorrent-restart.sh
 #!/bin/bash
 
 [[ $(pgrep -f 'qbittorrent-nox') ]] || screen -dmS qBittorrent-nox $HOME/bin/qbittorrent-nox
@@ -132,8 +132,8 @@ elif [ "${e}" == "2" ]; then
     qbittorrent_setting
     $HOME/bin/qbittorrent-nox -d
     # Automatic Restart
-    touch $HOME/qBittorrent-restart.sh
-    cat <<'EOF'> $HOME/qBittorrent-restart.sh
+    touch $HOME/.qBittorrent-restart.sh
+    cat <<'EOF'> $HOME/.qBittorrent-restart.sh
 #!/bin/bash
 
 [[ $(pgrep -f 'qbittorrent-nox') ]] || $HOME/bin/qbittorrent-nox -d
