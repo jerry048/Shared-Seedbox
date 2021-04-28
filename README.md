@@ -19,7 +19,7 @@ Install qBittorrent with tweaked libtorrent settings & autoremove-torrents with 
     Local User Service 
     Screen
     Daemon
-### Shared seedbox supports
+### Shared seedbox supports （Only for reference)
     1. Dediseedbox - qBittorrent in not connectable* since the SSH is built inside docker
         Please add WebUI\HostHeaderValidation=false to the config
         Need to use ssh tunneling to access the WebUI
