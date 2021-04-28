@@ -1,4 +1,4 @@
-# A huge bug has been found, leading to clients announcing more upload than they really do after pausing and resuming torrents. Please stop using the script and check if that happened to you.
+## !!!! When used with Ultra.cc (a.k.a. Ultraseedbox), the static build qBittorrent will falsely report more upload during pause/resume and reannounce. This could get you banned from the private trackers. Please install qBittorrent using their panel instead.
 
 # Shared-Seedbox
 <details>
@@ -16,11 +16,10 @@ Install qBittorrent with tweaked libtorrent settings & autoremove-torrents with 
     | qBittorrent 4.1.9.1 | libtorrent-1_1_14  |
     | qBittorrent 4.3.3   | libtorrent-v1.2.13 |
     | qBittorrent 4.3.4.1 | libtorrent-v1.2.13 |
-
 ### Current availble Installation Method:
     Local User Service 
     Screen
-    Daemon
+    Daemon 
 ### Shared seedbox supports （Only for reference)
     1. Dediseedbox - qBittorrent in not connectable* since the SSH is built inside docker
         Please add WebUI\HostHeaderValidation=false to the config
@@ -28,11 +27,20 @@ Install qBittorrent with tweaked libtorrent settings & autoremove-torrents with 
         
     2. Feralhosting - Use screen or Daemon installation Method
         
-    3. Whatbox - Use screen or Daemon installation Method
+    3. Ultra.cc - Do not use this script
     
+    4. Whatbox - Use screen or Daemon installation Method
+### Credit
+    qBittorrent Install - https://github.com/userdocs/qbittorrent-nox-static
+
+    qBittorrent Password Set - https://github.com/KozakaiAya/libqbpasswd & https://amefs.net/archives/2027.html
+
+    autoremove-torrents - https://github.com/jerrymakesjelly/autoremove-torrents
     
+    And N3ON for pointing out numerous bugs
     
 *Connectability - Ability of your client to accept incoming connections from other clients, to facilitate transferring data.  Two unconnectable clients can not communicate, which is why having people connectable in a swarm is important. *~From MAM*
+
 </details>
 
 <details>
