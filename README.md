@@ -1,3 +1,5 @@
+# A huge bug has been found, leading to clients announcing more upload than they really do after pausing and resuming torrents. Please stop using the script and check if that happened to you.
+
 # Shared-Seedbox
 <details>
   <summary>qBittorrent & autoremove-torrents Install</summary>
