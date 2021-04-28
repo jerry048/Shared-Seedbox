@@ -8,6 +8,14 @@ port=$4
 cache=$5
 publicip=$(curl https://ipinfo.io/ip)
 
+## Check existence of input argument in a Bash shell script
+
+if [ -z "$5" ]
+  then
+    echo "Please fill in all 5 arguments accordingly: <Username> <Password> <WebUI Port> <Port used for incoming connections> <Cache Size(unit:MiB)>"
+    exit
+fi
+
 # Load Functions
 curl -s -O https://raw.githubusercontent.com/jerry048/Seedbox-Components/main/.seedbox_installation.sh
 source .seedbox_installation.sh
