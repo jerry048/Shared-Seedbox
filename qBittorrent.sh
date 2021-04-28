@@ -113,7 +113,7 @@ WantedBy=default.target
 EOF
     systemctl --user daemon-reload
     systemctl --user enable qbittorrent-nox.service
-    systemctl --user start qbittorrent
+    systemctl --user start qbittorrent-nox
 # Screen
 elif [ "${e}" == "1" ]; then
     qbittorrent_setting
