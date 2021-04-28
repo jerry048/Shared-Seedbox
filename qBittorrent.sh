@@ -125,6 +125,7 @@ elif [ "${e}" == "1" ]; then
 
 [[ $(pgrep -f 'qbittorrent-nox') ]] || screen -dmS qBittorrent-nox $HOME/bin/qbittorrent-nox
 EOF
+    chmod +x $HOME/.qBittorrent-restart.sh
     crontab -l | { cat; echo "*/1 * * * * $HOME/.qBittorrent-restart.sh"; } | crontab -
 
 # Daemon
@@ -138,6 +139,7 @@ elif [ "${e}" == "2" ]; then
 
 [[ $(pgrep -f 'qbittorrent-nox') ]] || $HOME/bin/qbittorrent-nox -d
 EOF
+    chmod +x $HOME/.qBittorrent-restart.sh
     crontab -l | { cat; echo "*/1 * * * * $HOME/.qBittorrent-restart.sh"; } | crontab -
 fi
 
