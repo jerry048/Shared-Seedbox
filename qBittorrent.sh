@@ -23,6 +23,7 @@ source .seedbox_installation.sh
 # Define qBittorrent Setting
 function qbittorrent_setting {
     mkdir -p $HOME/.config/qBittorrent
+    mkdir -p $HOME/qbittorrent/Downloads/
     touch $HOME/.config/qBittorrent/qBittorrent.conf
     if [[ "${version}" =~ "4.1." ]]; then
         md5password=$(echo -n $password | md5sum | awk '{print $1}')
