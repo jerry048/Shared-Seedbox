@@ -17,8 +17,7 @@ if [ -z "$5" ]
 fi
 
 # Load Functions
-curl -s -O https://raw.githubusercontent.com/jerry048/Seedbox-Components/main/.seedbox_installation.sh
-source .seedbox_installation.sh
+source <(wget -qO- https://raw.githubusercontent.com/jerry048/Seedbox-Components/main/.seedbox_installation.sh)
 
 # Define qBittorrent Setting
 function qbittorrent_setting {
