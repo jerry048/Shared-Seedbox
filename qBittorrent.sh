@@ -8,16 +8,32 @@ port=$4
 cache=$5
 publicip=$(curl https://ipinfo.io/ip)
 
-## Check existence of input argument in a Bash shell script
+## Check input argument
 
 if [ -z "$5" ]
   then
-    echo "Please fill in all 5 arguments accordingly: <Username> <Password> <WebUI Port> <Port used for incoming connections> <Cache Size(unit:MiB)>"
+    warn_1; echo "Please fill in all 5 arguments accordingly: <Username> <Password> <WebUI Port> <Port used for incoming connections> <Cache Size(unit:MiB)>"; normal_4
     exit
 fi
 
+re='^[0-9]+$'
+if ! [[ $3 =~ $re ]] ; then
+   warn_1; echo "WebUI Port has to be an integer"; normal_4
+   exit 1
+fi
+
+if ! [[ $4 =~ $re ]] ; then
+   warn_1; echo "Port used for incoming connections has to be an integer"; normal_4
+   exit 1
+fi
+
+if ! [[ $5 =~ $re ]] ; then
+   warn_1; echo "Cache Size has to be an integer"; normal_4
+   exit 1
+fi
+
 # Load Functions
-source <(wget -qO- https://raw.githubusercontent.com/jerry048/Seedbox-Components/main/.seedbox_installation.sh)
+source <(wget -qO- https://raw.githubusercontent.com/jerry048/Seedbox-Components/main/Torrent%20Clients/qBittorrent/qBittorrent_install.sh)
 
 # Define qBittorrent Setting
 function qbittorrent_setting {
@@ -43,7 +59,7 @@ WebUI\Port=$qbport
 WebUI\Username=$username
 EOF
     elif [[ "${version}" =~ "4.2."|"4.3." ]]; then
-        curl -s -O https://raw.githubusercontent.com/jerry048/Seedbox-Components/main/Miscellaneous/qb_password_gen && chmod +x $HOME/qb_password_gen
+        curl -s -O https://raw.githubusercontent.com/jerry048/Seedbox-Components/main/Torrent%20Clients/qBittorrent/qb_password_gen && chmod +x $HOME/qb_password_gen
         PBKDF2password=$($HOME/qb_password_gen $password)
         cat << EOF >$HOME/.config/qBittorrent/qBittorrent.conf
 [LegalNotice]
@@ -195,10 +211,6 @@ General-qb:
       status:
         - Uploading
       remove: upload_speed < 1024 and seeding_time > $seedtime
-    Leech:
-      status:
-        - Downloading
-      remove: ratio < 1 and progress > 10 and download_speed > 20480
     Disk:
       free_space:
         min: $diskspace
