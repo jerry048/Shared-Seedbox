@@ -63,7 +63,7 @@ WebUI\Port=$qbport
 WebUI\Username=$username
 EOF
     elif [[ "${version}" =~ "4.2."|"4.3." ]]; then
-        curl -s -O https://raw.githubusercontent.com/jerry048/Seedbox-Components/main/Torrent%20Clients/qBittorrent/qb_password_gen && chmod +x $HOME/qb_password_gen
+        wget https://raw.githubusercontent.com/jerry048/Seedbox-Components/main/Torrent%20Clients/qBittorrent/qb_password_gen && chmod +x $HOME/qb_password_gen
         PBKDF2password=$($HOME/qb_password_gen $password)
         cat << EOF >$HOME/.config/qBittorrent/qBittorrent.conf
 [LegalNotice]
