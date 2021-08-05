@@ -1,5 +1,9 @@
 #!/bin/bash
 
+
+## Load text color settings
+source <(wget -qO- https://raw.githubusercontent.com/jerry048/Seedbox-Components/main/Miscellaneous/tput.sh)
+
 ## Grabbing information
 username=$1
 password=$2
