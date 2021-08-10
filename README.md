@@ -15,6 +15,8 @@ Install qBittorrent with tweaked libtorrent settings & autoremove-torrents with 
     | qBittorrent 4.3.3   | libtorrent-v1.2.13 |
     | qBittorrent 4.3.4.1 | libtorrent-v1.2.13 |
     | qBittorrent 4.3.5   | libtorrent-v1.2.13 |
+    | qBittorrent 4.3.6   | libtorrent-v1.2.14 |
+    | qBittorrent 4.3.7   | libtorrent-v1.2.14 |
 ### Current availble Installation Method:
     Local User Service 
     Screen
