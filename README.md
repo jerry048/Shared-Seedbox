@@ -1,4 +1,4 @@
-## !!!! When used with Ultra.cc (a.k.a. Ultraseedbox), the static build qBittorrent will falsely report more upload during pause/resume and reannounce. This could get you banned from the private trackers. Please install qBittorrent using their panel instead.
+## !!!! When used with Ultra.cc (a.k.a. Ultraseedbox), the static build qBittorrent will falsely report more upload during pause/resume and reannounce. This could get you banned from the private trackers. Please install Deluge using their panel instead.
 
 # Shared-Seedbox
 <details>
