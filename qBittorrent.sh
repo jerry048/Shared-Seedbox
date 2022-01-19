@@ -221,17 +221,6 @@ General-qb:
         path: $HOME/
         action: remove-old-seeds
   delete_data: true
-M-Team-qb:          
-  client: qbittorrent
-  host: http://127.0.0.1:$qbport
-  username: $username
-  password: $password
-  strategies:
-    Ratio:
-      trackers:
-        - tracker.m-team.cc
-      upload_ratio: 3
-  delete_data: true
 EOF
     sed -i 's+127.0.0.1: +127.0.0.1:+g' $HOME/.config.yml
     mkdir $HOME/.autoremove-torrents
