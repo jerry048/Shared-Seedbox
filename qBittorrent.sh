@@ -81,6 +81,31 @@ WebUI\Password_PBKDF2="@ByteArray($PBKDF2password)"
 WebUI\Port=$qbport
 WebUI\Username=$username
 EOF
+    elif [[ "${version}" =~ "4.4."|"4.5." ]]; then
+        wget https://raw.githubusercontent.com/jerry048/Seedbox-Components/main/Torrent%20Clients/qBittorrent/qb_password_gen && chmod +x $HOME/qb_password_gen
+        PBKDF2password=$($HOME/qb_password_gen $password)
+        cat << EOF >$HOME/.config/qBittorrent/qBittorrent.conf
+[Application]
+MemoryWorkingSetLimit=$cache
+
+[BitTorrent]
+Session\DefaultSavePath=$HOME/qbittorrent/Downloads/
+Session\DiskCacheSize=$cache
+Session\Port=$port
+Session\QueueingSystemEnabled=false
+
+[LegalNotice]
+Accepted=true
+
+[Network]
+Cookies=@Invalid()
+
+[Preferences]
+Connection\PortRangeMin=$port
+WebUI\Password_PBKDF2="@ByteArray($PBKDF2password)"
+WebUI\Port=$qbport
+WebUI\Username=$username
+EOF
         rm $HOME/qb_password_gen
     fi
 }
