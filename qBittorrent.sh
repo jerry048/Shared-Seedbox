@@ -44,7 +44,7 @@ function qbittorrent_setting {
     mkdir -p $HOME/.config/qBittorrent
     mkdir -p $HOME/qbittorrent/Downloads/
     touch $HOME/.config/qBittorrent/qBittorrent.conf
-    if [[ "${version}" =~ "4.1." ]]; then
+    if [[ "${qBver}" =~ "4.1." ]]; then
         md5password=$(echo -n $password | md5sum | awk '{print $1}')
         cat << EOF >$HOME/.config/qBittorrent/qBittorrent.conf
 [LegalNotice]
@@ -62,7 +62,7 @@ WebUI\Password_ha1=@ByteArray($md5password)
 WebUI\Port=$qbport
 WebUI\Username=$username
 EOF
-    elif [[ "${version}" =~ "4.2."|"4.3." ]]; then
+    elif [[ "${qBver}" =~ "4.2."|"4.3." ]]; then
         wget https://raw.githubusercontent.com/jerry048/Seedbox-Components/main/Torrent%20Clients/qBittorrent/qb_password_gen && chmod +x $HOME/qb_password_gen
         PBKDF2password=$($HOME/qb_password_gen $password)
         cat << EOF >$HOME/.config/qBittorrent/qBittorrent.conf
@@ -81,7 +81,7 @@ WebUI\Password_PBKDF2="@ByteArray($PBKDF2password)"
 WebUI\Port=$qbport
 WebUI\Username=$username
 EOF
-    elif [[ "${version}" =~ "4.4."|"4.5." ]]; then
+    elif [[ "${qBver}" =~ "4.4."|"4.5." ]]; then
         wget https://raw.githubusercontent.com/jerry048/Seedbox-Components/main/Torrent%20Clients/qBittorrent/qb_password_gen && chmod +x $HOME/qb_password_gen
         PBKDF2password=$($HOME/qb_password_gen $password)
         cat << EOF >$HOME/.config/qBittorrent/qBittorrent.conf
