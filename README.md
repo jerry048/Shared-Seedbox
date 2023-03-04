@@ -10,7 +10,9 @@
 Install qBittorrent with tweaked libtorrent settings & autoremove-torrents with minimum config. This script does not require root to run so it should support most Shared Seedbox.
 ### Currently availble qBittorrent Versions:
 
+    | qBittorrent 4.1.9   | libtorrent-1_1_14  |
     | qBittorrent 4.1.9.1 | libtorrent-1_1_14  |
+    | qBittorrent 4.3.8   | libtorrent-v1.2.14 |
     | qBittorrent 4.3.9   | libtorrent-v1.2.18 |
     | qBittorrent 4.4.5   | libtorrent-v1.2.18 |
     | qBittorrent 4.4.5   | libtorrent-v2.0.8  |
