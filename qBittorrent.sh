@@ -301,9 +301,6 @@ install_qBittorrent_(){
 		fi
 	fi
 
-	# Editing qBittorrent settings
-    systemctl stop qbittorrent-nox@$username
-
     if [[ "${qb_ver}" =~ "4.1." ]]; then
         md5password=$(echo -n $password | md5sum | awk '{print $1}')
         cat << EOF >$HOME/.config/qBittorrent/qBittorrent.conf
