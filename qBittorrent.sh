@@ -59,8 +59,8 @@ seperator() {
 ## Grabbing information
 username=$1
 password=$2
-qb_ver=$3
-lib_ver=$4
+qb_ver=("qBittorrent-$3")
+lib_ver=("libtorrent-$4")
 qb_cache=$5
 qb_port=$6
 qb_incoming_port=$7
@@ -270,6 +270,7 @@ install_qBittorrent_(){
 	fi
 
 	# Install qbittorrent-nox
+	mkdir -p $HOME/bin/
 	mv $HOME/qbittorrent-nox $HOME/bin/qbittorrent-nox
 	mkdir -p $HOME/qbittorrent/Downloads
     mkdir -p $HOME/.config/qBittorrent
