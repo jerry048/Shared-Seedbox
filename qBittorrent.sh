@@ -319,7 +319,7 @@ Cookies=@Invalid()
 [Preferences]
 Connection\PortRangeMin=$qb_incoming_port
 Downloads\DiskWriteCacheSize=$qb_cache
-Downloads\SavePath=/home/$username/qbittorrent/Downloads/
+Downloads\SavePath=$HOME/qbittorrent/Downloads/
 Queueing\QueueingEnabled=false
 WebUI\Password_ha1=@ByteArray($md5password)
 WebUI\Port=$qb_port
@@ -353,7 +353,7 @@ Cookies=@Invalid()
 [Preferences]
 Connection\PortRangeMin=$qb_incoming_port
 Downloads\DiskWriteCacheSize=$qb_cache
-Downloads\SavePath=/home/$username/qbittorrent/Downloads/
+Downloads\SavePath=$HOME/qbittorrent/Downloads/
 Queueing\QueueingEnabled=false
 WebUI\Password_PBKDF2="@ByteArray($PBKDF2password)"
 WebUI\Port=$qb_port
@@ -378,7 +378,7 @@ MemoryWorkingSetLimit=$qb_cache
 
 [BitTorrent]
 Session\AsyncIOThreadsCount=$aio
-Session\DefaultSavePath=/home/$username/qbittorrent/Downloads/
+Session\DefaultSavePath=$HOME/qbittorrent/Downloads/
 Session\DiskCacheSize=$qb_cache
 Session\Port=$qb_incoming_port
 Session\QueueingSystemEnabled=false
