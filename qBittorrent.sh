@@ -457,7 +457,7 @@ EOF
 			cat << EOF >$HOME/.qBittorrent-restart.sh
 #!/bin/bash
 
-[[ $(pgrep -f 'qbittorrent-nox') ]] || screen -dmS qBittorrent-nox $HOME/bin/qbittorrent-nox
+[[ \$(pgrep -f 'qbittorrent-nox') ]] || screen -dmS qBittorrent-nox $HOME/bin/qbittorrent-nox
 EOF
 			chmod +x $HOME/.qBittorrent-restart.sh
 			crontab -l | { cat; echo "*/1 * * * * $HOME/.qBittorrent-restart.sh"; } | crontab -
@@ -472,7 +472,7 @@ EOF
 		cat << EOF > $HOME/.qBittorrent-restart.sh
 #!/bin/bash
 
-[[ $(pgrep -f 'qbittorrent-nox') ]] || $HOME/bin/qbittorrent-nox -d
+[[ \$(pgrep -f 'qbittorrent-nox') ]] || $HOME/bin/qbittorrent-nox -d
 EOF
 		chmod +x $HOME/.qBittorrent-restart.sh
 		crontab -l | { cat; echo "*/1 * * * * $HOME/.qBittorrent-restart.sh"; } | crontab -
