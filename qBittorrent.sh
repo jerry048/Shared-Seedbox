@@ -242,7 +242,7 @@ install_qBittorrent_(){
 	# Check if it is still running
 	if pgrep -i -f qbittorrent; then
 		warn "Failed to stop qBittorrent. Please stop it manually"
-		return 1
+		exit 1
 	fi
 
 	## Check if qbittorrent-nox is installed
