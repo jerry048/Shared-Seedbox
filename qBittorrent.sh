@@ -235,12 +235,12 @@ install_qBittorrent_(){
 	qb_incoming_port=$7
 
 	## Check if qBittorrent is running
-	if pgrep -i -f qbittorrent; then
+	if pgrep -i -f qbittorrent-nox; then
 		warn "qBittorrent is running. Stopping it now..."
-		pkill -s $(pgrep -i -f qbittorrent)
+		pkill -s $(pgrep -i -f qbittorrent-nox)
 	fi
 	# Check if it is still running
-	if pgrep -i -f qbittorrent; then
+	if pgrep -i -f qbittorrent-nox; then
 		warn "Failed to stop qBittorrent. Please stop it manually"
 		exit 1
 	fi
@@ -489,7 +489,7 @@ install_qBittorrent_ $username $password $qb_ver $lib_ver $qb_cache $qb_port $qb
 qbittorrent_autostart_
 
 tput sgr0; clear
-if pgrep -i -f qbittorrent; then
+if pgrep -i -f qbittorrent-nox; then
 	info "qBittorrent is running"
 	boring_text "qBittorrent WebUI: http://$publicip:$qb_port"
 	boring_text "Username: $username"
