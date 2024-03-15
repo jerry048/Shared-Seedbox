@@ -1,7 +1,5 @@
+
 # Shared-Seedbox
-<details>
-  <summary>qBittorrent & autoremove-torrents Install</summary>
-</details>
 ## Usage
 `bash <(wget -qO- https://raw.githubusercontent.com/jerry048/Shared-Seedbox/main/qBittorrent.sh) <Username> <Password> <qBittorrent Version> <libtorrent Version> <Cache Size(unit:MiB)> <WebUI Port> <Port used for incoming connections>`
 
